@@ -10,7 +10,7 @@
 class ServerSSL
 {
 protected:
-    SSL_CTX *initWebServerCTX(void);
+    SSL_CTX *initServerCTX(void);
     int enableSSL();
     int prepare(const int maxClient = SERVER_MAX_CLIENTS);
     const size_t sslRead(SSL *clientSSL, char buffer[SERVER_MAX_BUFFER], const size_t length);
@@ -19,9 +19,9 @@ public:
     ServerSSL();
     ~ServerSSL();
     
-    int init(unsigned int port, const char *sslCert, const char *sslKey);
-    int waitForRequestAndProcess();
-    int close();
+    int Init(unsigned int port, const char *sslCert, const char *sslKey);
+    int WaitForRequestAndProcess();
+    int Close();
 private:
     struct sockaddr_in m_address;
     SSL_CTX            *m_ctx;

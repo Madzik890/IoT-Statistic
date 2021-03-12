@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/ClientSSL.o \
 	${OBJECTDIR}/src/CoreTemp.o \
 	${OBJECTDIR}/src/DiskSpace.o \
 	${OBJECTDIR}/src/MemorySpace.o \
@@ -63,7 +64,12 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/client: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/client ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/client ${OBJECTFILES} ${LDLIBSOPTIONS} -lssl -lcrypto
+
+${OBJECTDIR}/src/ClientSSL.o: src/ClientSSL.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ClientSSL.o src/ClientSSL.cpp
 
 ${OBJECTDIR}/src/CoreTemp.o: src/CoreTemp.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

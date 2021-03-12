@@ -2,6 +2,7 @@
 #include "MemorySpace.hpp"
 #include "DiskSpace.hpp"
 #include "CoreTemp.hpp"
+#include "ClientSSL.hpp"
 
 using namespace std;
 int main(void)
@@ -36,6 +37,10 @@ int main(void)
     else
         std::cout << "Cannot get core temp \n" << std::endl;
     
+    ClientSSL m_client("192.168.1.33", 8000);
+    m_client.Init();
+    m_client.SendMessage("Test - SSL");
+    m_client.Close();
      
     return 0;
 }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f2"
+                   displayName="ClientSSL"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>src/ClientSSL.cpp</itemPath>
+      <itemPath>src/ClientSSL.hpp</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -57,7 +64,14 @@
         <ccTool>
           <standard>8</standard>
         </ccTool>
+        <linkerTool>
+          <commandLine>-lssl -lcrypto</commandLine>
+        </linkerTool>
       </compileType>
+      <item path="src/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/CoreTemp.hpp" ex="false" tool="3" flavor2="0">
@@ -97,7 +111,14 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <commandLine>-lssl -lcrypto</commandLine>
+        </linkerTool>
       </compileType>
+      <item path="src/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/CoreTemp.hpp" ex="false" tool="3" flavor2="0">

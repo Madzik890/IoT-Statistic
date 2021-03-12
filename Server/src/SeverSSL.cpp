@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <netinet/tcp.h>
 #include <string>
+#include <iostream>
 
 ServerSSL::ServerSSL()
 {
@@ -10,9 +11,10 @@ ServerSSL::ServerSSL()
 
 ServerSSL::~ServerSSL()
 {
+    this->Close();
 }
 
-SSL_CTX *ServerSSL::initWebServerCTX(void)
+SSL_CTX *ServerSSL::initServerCTX(void)
 {
     const SSL_METHOD *m_method;
     SSL_CTX *m_ctx;
@@ -35,7 +37,7 @@ SSL_CTX *ServerSSL::initWebServerCTX(void)
 int ServerSSL::enableSSL()
 {
     SSL_library_init();
-    m_ctx = initWebServerCTX();        /* initialize SSL */
+    m_ctx = initServerCTX();        /* initialize SSL */
     if (m_ctx != NULL) return SERVER_SUCCESS;
     else return SERVER_SSL_ERROR_INIT;    
 }
@@ -171,7 +173,7 @@ int ServerSSL::loadSSLCert(const char* cert, const char* key)
     return SERVER_SUCCESS;
 }
 
-int ServerSSL::init(unsigned int port, const char *sslCert, const char *sslKey)
+int ServerSSL::Init(unsigned int port, const char *sslCert, const char *sslKey)
 {
     this->i_port = port;
     this->m_ctx = NULL;
@@ -181,7 +183,7 @@ int ServerSSL::init(unsigned int port, const char *sslCert, const char *sslKey)
     return EXIT_SUCCESS;
 }
 
-int ServerSSL::waitForRequestAndProcess()
+int ServerSSL::WaitForRequestAndProcess()
 {
 SSL *m_clientSSL;
 int  m_clientSocket;
@@ -233,7 +235,7 @@ void ServerSSL::closeClient(SSL *clientSSL)
         SSL_free(clientSSL);                  /* release SSL state */
     }
 }
-#include <iostream>
+
 int ServerSSL::proccess(SSL* clientSSL)
 {
 int i_fileLength;
@@ -243,7 +245,6 @@ char s_dataToSend[SERVER_MAX_BUFFER];
 std::string s_path;
 int m_file;
 int i_fileStatus;
-std::string WebResult;
     
     if (clientSSL != NULL)
     {
@@ -266,7 +267,7 @@ std::string WebResult;
     std::cout << s_buffer << std::endl;
 }
 
-int ServerSSL::close()
+int ServerSSL::Close()
 {
     shutdown(this->m_socket, SHUT_RDWR);
     return SERVER_SUCCESS;
