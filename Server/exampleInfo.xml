@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeviceInfo>
+   <GUID>
+		<Value>4cbb4ef1-f36c-476d-bf50-ae04f65f8537</Value>
+   </GUID>
+   <MemorySpace>
+       <Total>1009124</Total>
+       <Avaible>756852</Avaible>
+       <Free>672388</Free>
+   </MemorySpace>
+   <DiskSpace>
+       <Total>9452949504</Total>
+       <Free>7325151232</Free>
+   </DiskSpace>
+   <CoreTemp>
+       <Temp>0</Temp>
+   </CoreTemp>
+</DeviceInfo>

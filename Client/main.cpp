@@ -13,6 +13,7 @@
 
 int main(void)
 {
+    LogInfo m_log;
     MemorySpace m_memory;
     DiskSpace m_disk;
     CoreTemp m_core;
@@ -27,7 +28,7 @@ int main(void)
     ClientSSL m_client(SERVER_IP, SERVER_PORT);
     m_client.Init();
     m_client.SendMessage(m_manager.GetXML());
-    m_client.SendMessage(m_manager.GetXML());
+    m_client.SendMessage(m_log.ToString());
     m_client.Close();
      
     return 0;

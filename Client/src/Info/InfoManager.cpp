@@ -28,7 +28,9 @@ const std::string InfoManager::GetXML()
     std::string s_result;
     s_result = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
     s_result += "<DeviceInfo>\n";
-    s_result += "   <GUID>" + s_guid + "</GUID>\n";
+    s_result += "   <GUID>\n";
+    s_result += "       <Value> + s_guid + "</Value>\n";
+    s_result += "   </GUID>\n";
     
     for(int i = 0; i < m_infoVector.size(); i++)
         s_result += m_infoVector[i]->ToString();

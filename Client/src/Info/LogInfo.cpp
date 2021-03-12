@@ -9,11 +9,14 @@ LogInfo::~LogInfo()
     
 }
 
-const std::string LogInfo::ToString()
+const std::string LogInfo::ToString(const std::string guid)
 {
     std::string s_result;
     s_result = "<DeviceLog>\n";
-    s_result += "   <Content>" + getLog() + "   </Content>\n";
+    s_result += "   <GUID>\n";
+    s_result += "       <Value>" + guid + "</Value>\n";
+    s_result += "   </GUID>\n";
+    s_result += "   <Content>\"" + getLog() + "   \"</Content>\n";
     s_result += "</DeviceLog>\n";
     return s_result;
 }

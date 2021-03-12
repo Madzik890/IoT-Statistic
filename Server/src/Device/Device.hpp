@@ -2,6 +2,7 @@
 #define DEVICE_HPP
 
 #include "../Definitions.hpp"
+#include <string>
 
 struct Core
 {
@@ -24,14 +25,20 @@ struct Disk
 class Device
 {
 public: 
-    Device(std::string buffer);
+    Device(const std::string guid, const Core core, const Memory memory, const Disk disk);
     ~Device();
     
+    const Core GetCore();
+    const Memory GetMemory();
+    const Disk GetDisk();
+    const std::string GetGuid();
 private:
     Core m_core;
     Memory m_memory;
     Disk m_disk;
-}
+    std::string s_guid;
+    bool b_logSent;
+};
 
 #endif /* DEVICE_HPP */
 

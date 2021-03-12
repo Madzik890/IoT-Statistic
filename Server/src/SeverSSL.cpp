@@ -179,7 +179,7 @@ int ServerSSL::loadSSLCert(const char* cert, const char* key)
     return SERVER_SUCCESS;
 }
 
-int ServerSSL::attachCallback(void(*serverCallBack)(std::string buffer))
+int ServerSSL::AttachCallback(void(*serverCallBack)(std::string buffer))
 {
     this->serverCallBack = serverCallBack;
     if(serverCallBack != nullptr)
@@ -277,6 +277,7 @@ std::string s_message;
     
     s_message = s_buffer;
     
+    std::cout << s_message << std::endl;
     if (this->serverCallBack != NULL)
         this->caller(s_message);
     

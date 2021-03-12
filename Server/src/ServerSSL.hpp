@@ -21,7 +21,7 @@ public:
     ServerSSL();
     ~ServerSSL();
     
-    int attachCallback(void (*serverCallBack)(std::string buffer));
+    int AttachCallback(void (*serverCallBack)(std::string buffer));
     
     int Init(unsigned int port, const char *sslCert, const char *sslKey);
     int WaitForRequestAndProcess();

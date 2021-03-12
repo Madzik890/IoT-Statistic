@@ -36,7 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/src/SeverSSL.o
+	${OBJECTDIR}/src/DataBase/DataBase.o \
+	${OBJECTDIR}/src/Device/Device.o \
+	${OBJECTDIR}/src/SeverSSL.o \
+	${OBJECTDIR}/src/pugixml.o
 
 
 # C Compiler Flags
@@ -68,10 +71,25 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/src/DataBase/DataBase.o: src/DataBase/DataBase.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/DataBase
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DataBase/DataBase.o src/DataBase/DataBase.cpp
+
+${OBJECTDIR}/src/Device/Device.o: src/Device/Device.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Device
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Device/Device.o src/Device/Device.cpp
+
 ${OBJECTDIR}/src/SeverSSL.o: src/SeverSSL.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SeverSSL.o src/SeverSSL.cpp
+
+${OBJECTDIR}/src/pugixml.o: src/pugixml.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/pugixml.o src/pugixml.cpp
 
 # Subprojects
 .build-subprojects:

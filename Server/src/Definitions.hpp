@@ -25,6 +25,8 @@
 #define SERVER_MAX_CLIENTS             15
 #define SERVER_MAX_BUFFER              65535
 
+#define CALLBACK_FUNCT_EMPTY           0xaa00000
+
 typedef unsigned long long ull;
 
 #endif /* DEFINITIONS_HPP */

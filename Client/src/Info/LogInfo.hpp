@@ -10,7 +10,7 @@ public:
     LogInfo();
     ~LogInfo();
     
-    const std::string ToString();
+    const std::string ToString(const std::string guid);
 private:
     std::string getLog();
 };
