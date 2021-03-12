@@ -53,11 +53,11 @@ const std::string MemorySpace::ToString()
 {
     std::string s_result = "";
     
-    s_result += "<MemorySpace>\n";
-    s_result += "   <Total>" + std::to_string(u_memoryTotal) + "</Total>\n";
-    s_result += "   <Avaible>" + std::to_string(u_memoryAvaible) + "</Avaible>\n";
-    s_result += "   <Free>" + std::to_string(u_memoryFree) + "</Free>\n";
-    s_result += "</MemorySpace>\n";
+    s_result += "   <MemorySpace>\n";
+    s_result += "       <Total>" + std::to_string(u_memoryTotal) + "</Total>\n";
+    s_result += "       <Avaible>" + std::to_string(u_memoryAvaible) + "</Avaible>\n";
+    s_result += "       <Free>" + std::to_string(u_memoryFree) + "</Free>\n";
+    s_result += "   </MemorySpace>\n";
     
     return s_result;
 }

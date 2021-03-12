@@ -39,9 +39,9 @@ const std::string CoreTemp::ToString()
 {
     std::string s_result = "";
     
-    s_result += "<CoreTemp>\n";
-    s_result += "   <Temp>" + std::to_string(i_coreTemp) + "</Temp>\n";
-    s_result += "</CoreTemp>\n";
+    s_result += "   <CoreTemp>\n";
+    s_result += "       <Temp>" + std::to_string(i_coreTemp) + "</Temp>\n";
+    s_result += "   </CoreTemp>\n";
     
     return s_result;
 }

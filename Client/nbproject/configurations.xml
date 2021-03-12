@@ -5,8 +5,8 @@
                    displayName="ClientSSL"
                    projectFiles="true"
                    kind="ROOT">
-      <itemPath>src/ClientSSL.cpp</itemPath>
-      <itemPath>src/ClientSSL.hpp</itemPath>
+      <itemPath>src/SSL/ClientSSL.cpp</itemPath>
+      <itemPath>src/SSL/ClientSSL.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -20,25 +20,27 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>src/main.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f1"
                    displayName="Statistics"
                    projectFiles="true"
                    kind="ROOT">
       <logicalFolder name="f2" displayName="Core" projectFiles="true" kind="ROOT">
-        <itemPath>src/CoreTemp.cpp</itemPath>
-        <itemPath>src/CoreTemp.hpp</itemPath>
+        <itemPath>src/Info/CoreTemp.cpp</itemPath>
+        <itemPath>src/Info/CoreTemp.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="Disk" projectFiles="true" kind="ROOT">
-        <itemPath>src/DiskSpace.cpp</itemPath>
-        <itemPath>src/DiskSpace.hpp</itemPath>
+        <itemPath>src/Info/DiskSpace.cpp</itemPath>
+        <itemPath>src/Info/DiskSpace.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="Memory" projectFiles="true" kind="ROOT">
-        <itemPath>src/MemorySpace.cpp</itemPath>
-        <itemPath>src/MemorySpace.hpp</itemPath>
+        <itemPath>src/Info/MemorySpace.cpp</itemPath>
+        <itemPath>src/Info/MemorySpace.hpp</itemPath>
       </logicalFolder>
-      <itemPath>src/Info.hpp</itemPath>
+      <itemPath>src/Info/Info.hpp</itemPath>
+      <itemPath>src/Info/InfoManager.cpp</itemPath>
+      <itemPath>src/Info/InfoManager.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -68,27 +70,31 @@
           <commandLine>-lssl -lcrypto</commandLine>
         </linkerTool>
       </compileType>
-      <item path="src/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/CoreTemp.hpp" ex="false" tool="3" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Definitions.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/DiskSpace.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/DiskSpace.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/CoreTemp.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Info.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/DiskSpace.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/MemorySpace.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/DiskSpace.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/MemorySpace.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/Info.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/InfoManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Info/InfoManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Info/MemorySpace.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Info/MemorySpace.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SSL/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SSL/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -115,27 +121,31 @@
           <commandLine>-lssl -lcrypto</commandLine>
         </linkerTool>
       </compileType>
-      <item path="src/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/CoreTemp.hpp" ex="false" tool="3" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Definitions.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/DiskSpace.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/CoreTemp.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/DiskSpace.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/CoreTemp.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/Info.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/DiskSpace.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/MemorySpace.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/DiskSpace.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/MemorySpace.hpp" ex="false" tool="3" flavor2="0">
+      <item path="src/Info/Info.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/Info/InfoManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Info/InfoManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Info/MemorySpace.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Info/MemorySpace.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SSL/ClientSSL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SSL/ClientSSL.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -159,7 +159,7 @@ int ClientSSL::SendMessage(std::string message)
         /*bytes = SSL_read(m_ssl, buf, sizeof(buf)); /* get reply & decrypt */
        //buf[bytes] = 0;
         //printf("Received: \"%s\"\n", buf);
-        //SSL_free(ssl);        /* release connection state */
+        SSL_free(m_ssl);        /* release connection state */
     }
     close(m_socket);         /* close socket */
 }

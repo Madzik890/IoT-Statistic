@@ -2,7 +2,7 @@
 #define STATISTICS_HPP
 
 #include <string>
-#include "Definitions.hpp"
+#include "../Definitions.hpp"
 
 struct Info
 {

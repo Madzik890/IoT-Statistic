@@ -30,10 +30,10 @@ const std::string DiskSpace::ToString()
 {
     std::string s_result = "";
     
-    s_result += "<DiskSpace>\n";
-    s_result += "   <Total>" + std::to_string(u_diskTotal) + "</Total>\n";
-    s_result += "   <Free>" + std::to_string(u_diskFree) + "</Free>\n";
-    s_result += "</DiskSpace>\n";
+    s_result += "   <DiskSpace>\n";
+    s_result += "       <Total>" + std::to_string(u_diskTotal) + "</Total>\n";
+    s_result += "       <Free>" + std::to_string(u_diskFree) + "</Free>\n";
+    s_result += "   </DiskSpace>\n";
     
     return s_result;
 }

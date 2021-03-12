@@ -5,7 +5,7 @@
 #include <netinet/in.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
-#include "Definitions.hpp"
+#include "../Definitions.hpp"
 #include <string>
 
 class ClientSSL

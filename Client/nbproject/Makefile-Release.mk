@@ -35,11 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/ClientSSL.o \
-	${OBJECTDIR}/src/CoreTemp.o \
-	${OBJECTDIR}/src/DiskSpace.o \
-	${OBJECTDIR}/src/MemorySpace.o \
-	${OBJECTDIR}/src/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/src/Info/CoreTemp.o \
+	${OBJECTDIR}/src/Info/DiskSpace.o \
+	${OBJECTDIR}/src/Info/InfoManager.o \
+	${OBJECTDIR}/src/Info/MemorySpace.o \
+	${OBJECTDIR}/src/SSL/ClientSSL.o
 
 
 # C Compiler Flags
@@ -66,30 +67,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/client: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/client ${OBJECTFILES} ${LDLIBSOPTIONS} -lssl -lcrypto
 
-${OBJECTDIR}/src/ClientSSL.o: src/ClientSSL.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/main.o: main.cpp
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ClientSSL.o src/ClientSSL.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/src/CoreTemp.o: src/CoreTemp.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/Info/CoreTemp.o: src/Info/CoreTemp.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Info
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/CoreTemp.o src/CoreTemp.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/CoreTemp.o src/Info/CoreTemp.cpp
 
-${OBJECTDIR}/src/DiskSpace.o: src/DiskSpace.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/Info/DiskSpace.o: src/Info/DiskSpace.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Info
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DiskSpace.o src/DiskSpace.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/DiskSpace.o src/Info/DiskSpace.cpp
 
-${OBJECTDIR}/src/MemorySpace.o: src/MemorySpace.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/Info/InfoManager.o: src/Info/InfoManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Info
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/MemorySpace.o src/MemorySpace.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/InfoManager.o src/Info/InfoManager.cpp
 
-${OBJECTDIR}/src/main.o: src/main.cpp
-	${MKDIR} -p ${OBJECTDIR}/src
+${OBJECTDIR}/src/Info/MemorySpace.o: src/Info/MemorySpace.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Info
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/MemorySpace.o src/Info/MemorySpace.cpp
+
+${OBJECTDIR}/src/SSL/ClientSSL.o: src/SSL/ClientSSL.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/SSL
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SSL/ClientSSL.o src/SSL/ClientSSL.cpp
 
 # Subprojects
 .build-subprojects:
