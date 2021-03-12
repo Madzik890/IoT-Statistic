@@ -1,17 +1,27 @@
 #include <cstdlib>
 #include <unistd.h>
+#include <iostream>
 #include "src/ServerSSL.hpp"
 
-#define PORT                  8000                      // default SSL port
 #define SSL_CERT              "./example.crt"          // location of SSL cert
 #define KEY                   "./key.key"            // location of SSL key
+
+void DeviceInfoReceived(std::string buffer)
+{
+    std::cout << "Device info:\n" << buffer << std::endl;
+}
 
 int main(int argc, char** argv)
 {   
     ServerSSL m_server;
     
-    if (m_server.Init(8000, SSL_CERT, KEY) == EXIT_SUCCESS)
+    int i_port;
+    std::cout << "Podaj numer portu:";
+    std::cin >> i_port;
+    
+    if (m_server.Init(i_port, SSL_CERT, KEY) == EXIT_SUCCESS)
     {
+        m_server.attachCallback(&DeviceInfoReceived);
         while(1)    
         {
             int i_status = m_server.WaitForRequestAndProcess();
@@ -19,7 +29,7 @@ int main(int argc, char** argv)
                 i_status != SERVER_SSL_ERROR_FDSET && i_status != SERVER_SSL_ERROR_NEW)
             {
                 m_server.Close();
-                printf("Error while processing web request");
+                std::cout << "Error while processing web request" << std::endl;
                 return EXIT_FAILURE;
             }
             usleep(10000);

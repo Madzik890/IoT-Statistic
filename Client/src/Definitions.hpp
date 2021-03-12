@@ -15,5 +15,7 @@ typedef unsigned long long ull;
 #define CLIENT_MAX_BUFFER       65535
 #define CLIENT_CONNECT_ERROR    -1
 
+#define LOG_COMMAND             "dmesg"
+
 #endif /* DEFINITIONS_HPP */
 

@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Info/CoreTemp.o \
 	${OBJECTDIR}/src/Info/DiskSpace.o \
 	${OBJECTDIR}/src/Info/InfoManager.o \
+	${OBJECTDIR}/src/Info/LogInfo.o \
 	${OBJECTDIR}/src/Info/MemorySpace.o \
 	${OBJECTDIR}/src/SSL/ClientSSL.o
 
@@ -86,6 +87,11 @@ ${OBJECTDIR}/src/Info/InfoManager.o: src/Info/InfoManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Info
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/InfoManager.o src/Info/InfoManager.cpp
+
+${OBJECTDIR}/src/Info/LogInfo.o: src/Info/LogInfo.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Info
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Info/LogInfo.o src/Info/LogInfo.cpp
 
 ${OBJECTDIR}/src/Info/MemorySpace.o: src/Info/MemorySpace.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Info

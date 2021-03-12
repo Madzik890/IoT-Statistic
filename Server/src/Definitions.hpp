@@ -23,7 +23,9 @@
 #define SERVER_NOT_FOUND               0x900000
 
 #define SERVER_MAX_CLIENTS             15
-#define SERVER_MAX_BUFFER  65535
+#define SERVER_MAX_BUFFER              65535
+
+typedef unsigned long long ull;
 
 #endif /* DEFINITIONS_HPP */
 

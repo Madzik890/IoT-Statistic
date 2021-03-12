@@ -5,11 +5,13 @@
 #include <netinet/in.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>
+#include <string>
 #include "Definitions.hpp"
 
 class ServerSSL
 {
 protected:
+    void caller(std::string buffer);
     SSL_CTX *initServerCTX(void);
     int enableSSL();
     int prepare(const int maxClient = SERVER_MAX_CLIENTS);
@@ -18,6 +20,8 @@ protected:
 public: 
     ServerSSL();
     ~ServerSSL();
+    
+    int attachCallback(void (*serverCallBack)(std::string buffer));
     
     int Init(unsigned int port, const char *sslCert, const char *sslKey);
     int WaitForRequestAndProcess();
@@ -28,6 +32,7 @@ private:
     int                m_socket;
     int                i_addrlen;
     int                i_port;
+    void (*serverCallBack)(std::string buffer);
     
     inline void closeClient(SSL *clientSSL);
     int proccess(SSL *clientSSL);

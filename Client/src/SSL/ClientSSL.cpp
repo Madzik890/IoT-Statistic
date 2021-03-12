@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <resolv.h>
+#include <iostream>
 
 ClientSSL::ClientSSL(char *ip, const int port)
 :s_ip(ip), i_port(port)
@@ -118,7 +119,7 @@ int ClientSSL::openConnection()
 
     if ( (host = gethostbyname(s_ip.c_str())) == NULL )
     {
-        abort();
+        std::cout << "Cannot find hostname!" << std::endl;
     }
     sd = socket(PF_INET, SOCK_STREAM, 0);
     bzero(&addr, sizeof(addr));
@@ -128,7 +129,7 @@ int ClientSSL::openConnection()
     if ( connect(sd, (struct sockaddr*)&addr, sizeof(addr)) != 0 )
     {
         close(sd);
-        abort();
+       std::cout << "Cannot connect to server!" << std::endl;
     }
     return sd;
 }
@@ -137,7 +138,6 @@ int ClientSSL::Init()
 {
     SSL_library_init();
     m_ctx = initClientCTX();
-    //LoadCertificates(ctx, CertFile, KeyFile);
 }
 
 int ClientSSL::SendMessage(std::string message)
@@ -150,12 +150,9 @@ int ClientSSL::SendMessage(std::string message)
     if ( SSL_connect(m_ssl) == CLIENT_CONNECT_ERROR)   /* perform the connection */
         ERR_print_errors_fp(stderr);
     else
-    {   
-        char *msg = "Hello???";
-
+    {  
         printf("Connected with %s encryption\n", SSL_get_cipher(m_ssl));
-        //ShowCerts(ssl);        /* get any certs */
-        SSL_write(m_ssl, msg, strlen(msg));   /* encrypt & send message */
+        SSL_write(m_ssl, message.c_str(), message.size());   /* encrypt & send message */
         /*bytes = SSL_read(m_ssl, buf, sizeof(buf)); /* get reply & decrypt */
        //buf[bytes] = 0;
         //printf("Received: \"%s\"\n", buf);

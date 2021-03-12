@@ -3,12 +3,13 @@
 #include "./src/Info/MemorySpace.hpp"
 #include "./src/Info/DiskSpace.hpp"
 #include "./src/Info/CoreTemp.hpp"
+#include "./src/Info/LogInfo.hpp"
 #include "./src/SSL/ClientSSL.hpp"
 
 #define DEVICE_QUID     "4cbb4ef1-f36c-476d-bf50-ae04f65f8537"
 #define CLIENT_TIME     1000000//1sec
-#define CLIENT_IP       "192.168.1.33"
-#define CLIENT_PORT     8000
+#define SERVER_IP       "192.168.1.33"
+#define SERVER_PORT     8000
 
 int main(void)
 {
@@ -21,12 +22,13 @@ int main(void)
     m_manager.AddInfo(dynamic_cast<Info*>(&m_disk));
     m_manager.AddInfo(dynamic_cast<Info*>(&m_core));
 
-    std::cout << m_manager.GetXML() << std::endl;
-    
-    /*ClientSSL m_client("192.168.1.33", 8000);
+    m_manager.GetInfo();
+
+    ClientSSL m_client(SERVER_IP, SERVER_PORT);
     m_client.Init();
-    m_client.SendMessage("Test - SSL");
-    m_client.Close();*/
+    m_client.SendMessage(m_manager.GetXML());
+    m_client.SendMessage(m_manager.GetXML());
+    m_client.Close();
      
     return 0;
 }

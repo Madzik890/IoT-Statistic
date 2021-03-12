@@ -6,12 +6,18 @@
 #include <iostream>
 
 ServerSSL::ServerSSL()
+:serverCallBack(nullptr)
 {
 }
 
 ServerSSL::~ServerSSL()
 {
     this->Close();
+}
+
+void ServerSSL::caller(std::string buffer)
+{
+    serverCallBack(buffer);
 }
 
 SSL_CTX *ServerSSL::initServerCTX(void)
@@ -173,6 +179,15 @@ int ServerSSL::loadSSLCert(const char* cert, const char* key)
     return SERVER_SUCCESS;
 }
 
+int ServerSSL::attachCallback(void(*serverCallBack)(std::string buffer))
+{
+    this->serverCallBack = serverCallBack;
+    if(serverCallBack != nullptr)
+        return SERVER_SUCCESS;
+    else
+        return SERVER_ERROR;
+}
+
 int ServerSSL::Init(unsigned int port, const char *sslCert, const char *sslKey)
 {
     this->i_port = port;
@@ -238,13 +253,9 @@ void ServerSSL::closeClient(SSL *clientSSL)
 
 int ServerSSL::proccess(SSL* clientSSL)
 {
-int i_fileLength;
 long l_clientSent;
 char s_buffer[SERVER_MAX_BUFFER + 1];  // +1 - terminator
-char s_dataToSend[SERVER_MAX_BUFFER];
-std::string s_path;
-int m_file;
-int i_fileStatus;
+std::string s_message;
     
     if (clientSSL != NULL)
     {
@@ -264,7 +275,13 @@ int i_fileStatus;
         return SERVER_ERROR;
     }
     
-    std::cout << s_buffer << std::endl;
+    s_message = s_buffer;
+    
+    if (this->serverCallBack != NULL)
+        this->caller(s_message);
+    
+    closeClient(clientSSL);
+    return SERVER_SUCCESS;
 }
 
 int ServerSSL::Close()
