@@ -6,6 +6,8 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #include "../Definitions.hpp"
+#include "../Info/InfoManager.hpp"
+#include "../Info/LogInfo.hpp"
 #include <string>
 
 class ClientSSL
@@ -15,13 +17,15 @@ protected:
     int enableSSL();
     int prepare();
     const size_t sslRead(SSL *clientSSL, char buffer[CLIENT_MAX_BUFFER], const size_t length);
+    const int sendMessage(std::string message, std::string *received = nullptr);
     int openConnection();
 public: 
     ClientSSL(char* ip, const int port);
     ~ClientSSL();
     
     int Init();
-    int SendMessage(std::string message);
+    int SendInfo(InfoManager &manager);
+    int SendLog(LogInfo &log);
     int Close();
     
     const int GetPort();

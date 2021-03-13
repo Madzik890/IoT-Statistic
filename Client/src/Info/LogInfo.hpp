@@ -7,12 +7,17 @@
 class LogInfo
 {
 public:
-    LogInfo();
+    LogInfo(const std::string guid);
     ~LogInfo();
     
-    const std::string ToString(const std::string guid);
+    const std::string ToString();
+    
+    void SetLogSentID(const std::string id);
+    const std::string GetLogSentID();
 private:
     std::string getLog();
+    std::string s_guid;
+    std::string s_logSentID;
 };
 
 

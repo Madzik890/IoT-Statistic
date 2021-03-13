@@ -13,7 +13,7 @@
 
 int main(void)
 {
-    LogInfo m_log;
+    LogInfo m_log(DEVICE_QUID);
     MemorySpace m_memory;
     DiskSpace m_disk;
     CoreTemp m_core;
@@ -27,9 +27,11 @@ int main(void)
 
     ClientSSL m_client(SERVER_IP, SERVER_PORT);
     m_client.Init();
-    m_client.SendMessage(m_manager.GetXML());
-    m_client.SendMessage(m_log.ToString());
-    m_client.Close();
+    //m_client.SendMessage(m_manager.GetXML());
+    //std::cout << m_client.SendLog(m_log) << std::endl;
+    //std::cout << m_client.SendLog(m_log) << std::endl;
+    std::cout << m_client.SendLog(m_log) << std::endl;
+    //m_client.SendInfo(m_manager);
      
     return 0;
 }

@@ -15,9 +15,9 @@ ServerSSL::~ServerSSL()
     this->Close();
 }
 
-void ServerSSL::caller(std::string buffer)
+std::string ServerSSL::caller(std::string buffer)
 {
-    serverCallBack(buffer);
+    return serverCallBack(buffer);
 }
 
 SSL_CTX *ServerSSL::initServerCTX(void)
@@ -179,7 +179,7 @@ int ServerSSL::loadSSLCert(const char* cert, const char* key)
     return SERVER_SUCCESS;
 }
 
-int ServerSSL::AttachCallback(void(*serverCallBack)(std::string buffer))
+int ServerSSL::AttachCallback(std::string(*serverCallBack)(std::string buffer))
 {
     this->serverCallBack = serverCallBack;
     if(serverCallBack != nullptr)
@@ -203,15 +203,13 @@ int ServerSSL::WaitForRequestAndProcess()
 SSL *m_clientSSL;
 int  m_clientSocket;
 int res, err;
-
     
     if ((m_clientSocket = accept(this->m_socket, (struct sockaddr *)&this->m_address, (socklen_t*)&this->i_addrlen)) < 0)
     {
         err = errno;
         if (err == EINTR) return EINTR;
         else if (err == EWOULDBLOCK) return SERVER_ERROR_WOULDBLOCK;
-        else
-            return SERVER_ERROR_ACCEPT;
+        else return SERVER_ERROR_ACCEPT;
     }
     signal(SIGPIPE,SIG_IGN);                            //ignoring the broken pipe signal
     int i = 1;
@@ -256,9 +254,11 @@ int ServerSSL::proccess(SSL* clientSSL)
 long l_clientSent;
 char s_buffer[SERVER_MAX_BUFFER + 1];  // +1 - terminator
 std::string s_message;
+std::string s_callBackResult;
     
     if (clientSSL != NULL)
     {
+        printf("%d\n", SSL_pending(clientSSL));
         l_clientSent = sslRead(clientSSL, s_buffer, SERVER_MAX_BUFFER);                         /* get request */
         if (l_clientSent == 1)
             l_clientSent = sslRead(clientSSL, s_buffer, SERVER_MAX_BUFFER);  /* get request */
@@ -277,9 +277,11 @@ std::string s_message;
     
     s_message = s_buffer;
     
-    std::cout << s_message << std::endl;
     if (this->serverCallBack != NULL)
-        this->caller(s_message);
+        s_callBackResult = this->caller(s_message);
+    
+    if(!s_callBackResult.empty())
+        SSL_write(clientSSL, s_callBackResult.c_str(), s_callBackResult.size());
     
     closeClient(clientSSL);
     return SERVER_SUCCESS;

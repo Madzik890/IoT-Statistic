@@ -3,7 +3,6 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <resolv.h>
-#include <iostream>
 
 ClientSSL::ClientSSL(char *ip, const int port)
 :s_ip(ip), i_port(port)
@@ -111,6 +110,39 @@ const size_t ClientSSL::sslRead(SSL* clientSSL, char buffer[], const size_t leng
     return received;
 }
 
+const int ClientSSL::sendMessage(std::string message, std::string *received)
+{
+    SSL *m_ssl;
+    char s_buffer[CLIENT_MAX_BUFFER + 1];  // +1 - terminator;
+    long l_clientSent;
+    
+    m_socket = openConnection();
+    m_ssl = SSL_new(m_ctx);      /* create new SSL connection state */
+    SSL_set_fd(m_ssl, m_socket);    /* attach the socket descriptor */
+    if ( SSL_connect(m_ssl) == CLIENT_ERROR_CONNECT)   /* perform the connection */
+    {
+        ERR_print_errors_fp(stderr);
+        return CLIENT_ERROR_CONNECT;
+    }
+    else
+    {  
+        SSL_write(m_ssl, message.c_str(), message.size());   /* encrypt & send message */
+        
+        l_clientSent = sslRead(m_ssl, s_buffer, CLIENT_MAX_BUFFER);                         /* get request */
+        if (l_clientSent == 1)
+            l_clientSent = sslRead(m_ssl, s_buffer, CLIENT_MAX_BUFFER);  
+        if(l_clientSent > 0 && received != nullptr)
+        {
+            s_buffer[l_clientSent] = 0;
+            *received = std::string(s_buffer);
+        }
+        SSL_free(m_ssl);        /* release connection state */
+    }
+    close(m_socket);         /* close socket */
+    
+    return CLIENT_SUCCESS;
+}
+
 int ClientSSL::openConnection()
 {
     int sd;
@@ -118,9 +150,7 @@ int ClientSSL::openConnection()
     struct sockaddr_in addr;
 
     if ( (host = gethostbyname(s_ip.c_str())) == NULL )
-    {
-        std::cout << "Cannot find hostname!" << std::endl;
-    }
+        return CLIENT_ERROR_HOSTNAME;
     sd = socket(PF_INET, SOCK_STREAM, 0);
     bzero(&addr, sizeof(addr));
     addr.sin_family = AF_INET;
@@ -128,8 +158,8 @@ int ClientSSL::openConnection()
     addr.sin_addr.s_addr = *(long*)(host->h_addr);
     if ( connect(sd, (struct sockaddr*)&addr, sizeof(addr)) != 0 )
     {
-        close(sd);
-       std::cout << "Cannot connect to server!" << std::endl;
+       close(sd);
+       return CLIENT_ERROR_CONNECT;
     }
     return sd;
 }
@@ -140,25 +170,41 @@ int ClientSSL::Init()
     m_ctx = initClientCTX();
 }
 
-int ClientSSL::SendMessage(std::string message)
+int ClientSSL::SendInfo(InfoManager& manager)
 {
-    SSL *m_ssl;
-    
-    m_socket = openConnection();
-    m_ssl = SSL_new(m_ctx);      /* create new SSL connection state */
-    SSL_set_fd(m_ssl, m_socket);    /* attach the socket descriptor */
-    if ( SSL_connect(m_ssl) == CLIENT_CONNECT_ERROR)   /* perform the connection */
-        ERR_print_errors_fp(stderr);
-    else
-    {  
-        printf("Connected with %s encryption\n", SSL_get_cipher(m_ssl));
-        SSL_write(m_ssl, message.c_str(), message.size());   /* encrypt & send message */
-        /*bytes = SSL_read(m_ssl, buf, sizeof(buf)); /* get reply & decrypt */
-       //buf[bytes] = 0;
-        //printf("Received: \"%s\"\n", buf);
-        SSL_free(m_ssl);        /* release connection state */
+    return sendMessage(manager.GetXML());
+}
+
+int ClientSSL::SendLog(LogInfo& log)
+{
+    if(log.GetLogSentID().empty())
+    {
+        int i_result;
+        std::string s_logID;
+        i_result = sendMessage(log.ToString(), &s_logID);
+        if(!s_logID.empty())
+        {
+            if(s_logID.compare(CLIENT_ERROR_OVERWRITE_STRING) == 0)//klient przesłał kiedyś LOG
+            {
+                log.SetLogSentID(CLIENT_ERROR_OVERWRITE_STRING);
+                return CLIENT_ERROR_OVERWRITE;
+            }
+            else
+            if(s_logID.compare(CLIENT_ERROR_GUID_STRING) == 0)//klient nie przesłał GUID
+            {
+                return CLIENT_ERROR_GUID;
+            }
+            else                                 //klient pierwszy raz przesłał logi
+            {
+                log.SetLogSentID(s_logID);
+                return CLIENT_SUCCESS;
+            }
+                
+        }
+        return i_result;
     }
-    close(m_socket);         /* close socket */
+    else
+        return CLIENT_ERROR_OVERWRITE;
 }
 
 int ClientSSL::Close()

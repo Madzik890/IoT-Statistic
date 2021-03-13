@@ -22,6 +22,8 @@
                    displayName="ServerSSL"
                    projectFiles="true"
                    kind="ROOT">
+      <itemPath>src/ServerCallback.cpp</itemPath>
+      <itemPath>src/ServerCallback.hpp</itemPath>
       <itemPath>src/ServerSSL.hpp</itemPath>
       <itemPath>src/SeverSSL.cpp</itemPath>
     </logicalFolder>
@@ -74,6 +76,10 @@
       </item>
       <item path="src/Device/Device.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/ServerCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerCallback.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/ServerSSL.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/SeverSSL.cpp" ex="false" tool="1" flavor2="0">
@@ -116,6 +122,10 @@
       <item path="src/Device/Device.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Device/Device.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ServerCallback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerCallback.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/ServerSSL.hpp" ex="false" tool="3" flavor2="0">
       </item>

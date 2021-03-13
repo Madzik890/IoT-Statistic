@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/DataBase/DataBase.o \
 	${OBJECTDIR}/src/Device/Device.o \
+	${OBJECTDIR}/src/ServerCallback.o \
 	${OBJECTDIR}/src/SeverSSL.o \
 	${OBJECTDIR}/src/pugixml.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/src/Device/Device.o: src/Device/Device.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Device
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Device/Device.o src/Device/Device.cpp
+
+${OBJECTDIR}/src/ServerCallback.o: src/ServerCallback.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilib/pugixml -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ServerCallback.o src/ServerCallback.cpp
 
 ${OBJECTDIR}/src/SeverSSL.o: src/SeverSSL.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

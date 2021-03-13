@@ -1,6 +1,7 @@
 #include "LogInfo.hpp"
 
-LogInfo::LogInfo()
+LogInfo::LogInfo(const std::string guid)
+:s_guid(guid), s_logSentID("")
 {
 }
 
@@ -9,16 +10,26 @@ LogInfo::~LogInfo()
     
 }
 
-const std::string LogInfo::ToString(const std::string guid)
+const std::string LogInfo::ToString()
 {
     std::string s_result;
     s_result = "<DeviceLog>\n";
     s_result += "   <GUID>\n";
-    s_result += "       <Value>" + guid + "</Value>\n";
+    s_result += "       <Value>" + s_guid + "</Value>\n";
     s_result += "   </GUID>\n";
     s_result += "   <Content>\"" + getLog() + "   \"</Content>\n";
     s_result += "</DeviceLog>\n";
     return s_result;
+}
+
+void LogInfo::SetLogSentID(const std::string id)
+{
+    s_logSentID = id;
+}
+
+const std::string LogInfo::GetLogSentID()
+{
+    return s_logSentID;
 }
 
 std::string LogInfo::getLog()
@@ -38,5 +49,7 @@ std::string LogInfo::getLog()
         if (fgets(s_buffer, CLIENT_MAX_BUFFER, m_stream) != NULL) s_data.append(s_buffer);
        pclose(m_stream);
    }
+   
    return s_data;
 }
+

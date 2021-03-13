@@ -11,7 +11,7 @@
 class ServerSSL
 {
 protected:
-    void caller(std::string buffer);
+    std::string caller(std::string buffer);
     SSL_CTX *initServerCTX(void);
     int enableSSL();
     int prepare(const int maxClient = SERVER_MAX_CLIENTS);
@@ -21,7 +21,7 @@ public:
     ServerSSL();
     ~ServerSSL();
     
-    int AttachCallback(void (*serverCallBack)(std::string buffer));
+    int AttachCallback(std::string (*serverCallBack)(std::string buffer));
     
     int Init(unsigned int port, const char *sslCert, const char *sslKey);
     int WaitForRequestAndProcess();
@@ -32,7 +32,7 @@ private:
     int                m_socket;
     int                i_addrlen;
     int                i_port;
-    void (*serverCallBack)(std::string buffer);
+    std::string (*serverCallBack)(std::string buffer);
     
     inline void closeClient(SSL *clientSSL);
     int proccess(SSL *clientSSL);

@@ -1,7 +1,7 @@
 #include "DataBase.hpp"
 #include <fstream>
 
-int saveXML(const Device device)
+int saveXML(Device device)
 {
     std::string s_path = "./dataBase/info/" + device.GetGuid();
     std::ofstream m_deviceFile(s_path.c_str());
@@ -24,9 +24,9 @@ int saveXML(const Device device)
     return SERVER_ERROR;
 }
 
-int saveXMLLog(const std::string guid, const std::string log)
+int saveXMLLog(std::string guid, std::string log)
 {
-    std::string s_path = "./dataBase/log/" + guid.c_str();
+    std::string s_path = "./dataBase/log/" + guid;
     std::ofstream m_deviceFile(s_path.c_str());
     if(m_deviceFile.is_open())
     {
