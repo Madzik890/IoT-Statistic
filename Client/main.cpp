@@ -23,15 +23,18 @@ int main(void)
     m_manager.AddInfo(dynamic_cast<Info*>(&m_disk));
     m_manager.AddInfo(dynamic_cast<Info*>(&m_core));
 
-    m_manager.GetInfo();
-
     ClientSSL m_client(SERVER_IP, SERVER_PORT);
     m_client.Init();
-    //m_client.SendMessage(m_manager.GetXML());
-    //std::cout << m_client.SendLog(m_log) << std::endl;
-    //std::cout << m_client.SendLog(m_log) << std::endl;
-    std::cout << m_client.SendLog(m_log) << std::endl;
-    //m_client.SendInfo(m_manager);
+    
+    while(true)
+    {
+        m_manager.GetInfo();
+        m_client.SendInfo(m_manager);
+        m_client.SendLog(m_log)
+        usleep(CLIENT_TIME);
+    }
+    
+    m_client.Close();
      
-    return 0;
+    return EXIT_SUCCESS;
 }
