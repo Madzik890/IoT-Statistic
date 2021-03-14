@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-bool checkServerStatus();
+int CheckServerStatus();
 
 const std::vector<std::string> CheckDevices();
 const std::vector<std::string> CheckDevicesLogs();

@@ -1,10 +1,12 @@
 #include <cstdlib>
 #include <stdio.h>
+#include <string.h>
 #include <iostream>
 #include "src/API.hpp"
 
 using namespace std;
 
+void CheckServer();
 void GetDevices();
 void GetDevicesLog();
 void ShowDevice(const std::string guid);
@@ -14,30 +16,66 @@ void ShowAllDevicesLogs();
 
 void HelpArgv()
 {
-    printf("Użycie ServerAPI [-gd] [-gDL] [-sd] [-sdl] [-sda] [-sdla]\n");
+    printf("Użycie ServerAPI [-gd] [-gdl] [-sd] [-sdl] [-sda] [-sdla]\n");
 
     printf("\nOpcje: \n");
     printf("   -cs               Sprawdza czy serwer jest wlaczony. \n");
-    printf("   -gD               Sprawdza liste urzadzen ktore zapisaly informacje systemowe. \n");
-    printf("   -gDL              Sprawdza liste urzadzen ktore zapisaly logi systemowe. \n");
-    printf("   -sD               Wyswietla informacje systemowe podanego urzadzenia. \n");
-    printf("   -sDL              Wyswietla logi systemowe podanego urzadzenia. \n");
-    printf("   -sDA              Wyswietla informacje systemowe wszystkich urzadzen. \n");
-    printf("   -sDLA             Wyswietla logi systemowe wszystkich urzadzen. \n");
+    printf("   -gd               Sprawdza liste urzadzen ktore zapisaly informacje systemowe. \n");
+    printf("   -gdl              Sprawdza liste urzadzen ktore zapisaly logi systemowe. \n");
+    printf("   -sd               Wyswietla informacje systemowe podanego urzadzenia. \n");
+    printf("   -sdl              Wyswietla logi systemowe podanego urzadzenia. \n");
+    printf("   -sda              Wyswietla informacje systemowe wszystkich urzadzen. \n");
+    printf("   -sdla             Wyswietla logi systemowe wszystkich urzadzen. \n");
 }
 
 int main(int argc, char** argv) 
 {
+    if(argc > 1)
+    {       
+        for(int i = 1; i <= argc - 1;i++)
+        {
+            if(!strcmp( argv[ i ], "-help" ) || !strcmp( argv[ i ], "--help" ))
+            {
+                HelpArgv();
+                break;
+            }
+            
+            if(!strcmp( argv[ i ], "-cs" ))
+                CheckServer();
+            else
+            if(!strcmp( argv[ i ], "-gd" ))
+                GetDevices();
+            else
+            if(!strcmp( argv[ i ], "-gdl" ))
+                GetDevicesLog();
+            else
+            if(!strcmp( argv[ i ], "-sd" ) && argc >= (i+1))
+                ShowDevice(argv[i+1]);
+            else
+            if(!strcmp( argv[ i ], "-sdl" ) && argc >= (i+1))
+                ShowDevice(argv[i+1]);
+            else
+            if(!strcmp( argv[ i ], "-sda" ))
+                ShowAllDevices();
+            else
+            if(!strcmp( argv[ i ], "-sdla" ))
+                ShowAllDevicesLogs();
+        }
+    }
+    else
+        HelpArgv();
 
-    //HelpArgv();
+    return EXIT_SUCCESS;
+}
 
-    //GetDevices();
-    //getDevicesLog();
-    //std::cout << GetDeviceLog("4cbb4ef1-f36c-476d-bf50-ae04f65f8537") << std::endl;
-    //ShowDevice("4cbb4ef1-f36c-476d-bf50-ae04f65f8537");
-    //ShowAllDevices();
-    ShowAllDevicesLogs();
-    return 0;
+void CheckServer()
+{
+    const int status = CheckServerStatus();
+    
+    if(status != -1)
+        std::cout << "Serwer jest wlaczony" << std::endl;
+    else
+        std::cout << "Server nie jest wlaczony" << std::endl;
 }
 
 void GetDevices()

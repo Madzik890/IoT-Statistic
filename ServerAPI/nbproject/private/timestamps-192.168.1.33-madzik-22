@@ -1,4 +1,4 @@
-#Sun Mar 14 02:14:57 CET 2021
+#Sun Mar 14 02:36:38 CET 2021
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\database\\info\\4cbb4ef1-f36c-476d-bf50-ae04f65f8537=c1615658522555
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\makefile-impl.mk=c1615658710066
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\database\\log\\5cbb4ef1-f36c-476d-bf50-ae04f65f8537=c1615684339312
@@ -6,16 +6,16 @@ d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\makefile-variables.
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\private\\makefile-variables.mk=c1615658710162
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\package-debug.bash=c1615658710098
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\package-release.bash=c1615658710129
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\api.hpp=c1615682841855
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\api.hpp=c1615685572388
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\device\\device.hpp=c1615681377885
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\database\\info\\5cbb4ef1-f36c-476d-bf50-ae04f65f8537=c1615684303384
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\project.xml=c1615660138735
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\definitions.hpp=c1615682857137
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\api.cpp=c1615683621033
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\definitions.hpp=c1615685796549
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\api.cpp=c1615685567876
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\src\\device\\device.cpp=c1615681391165
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\main.cpp=c1615684495746
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\main.cpp=c1615685665875
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\database\\log\\4cbb4ef1-f36c-476d-bf50-ae04f65f8537=c1615658562111
 VERSION=1.3
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\makefile-release.mk=c1615679595546
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\makefile=c1615658710289
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\makefile-release.mk=c1615679595546
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\serverapi\\nbproject\\makefile-debug.mk=c1615679595514
