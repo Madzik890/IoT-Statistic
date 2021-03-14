@@ -20,7 +20,7 @@ protected:
     const int sendMessage(std::string message, std::string *received = nullptr);
     int openConnection();
 public: 
-    ClientSSL(char* ip, const int port);
+    ClientSSL(const char* ip, const int port);
     ~ClientSSL();
     
     int Init();

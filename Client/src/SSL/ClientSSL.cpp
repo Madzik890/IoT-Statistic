@@ -4,7 +4,7 @@
 #include <netdb.h>
 #include <resolv.h>
 
-ClientSSL::ClientSSL(char *ip, const int port)
+ClientSSL::ClientSSL(const char *ip, const int port)
 :s_ip(ip), i_port(port)
 {
     
