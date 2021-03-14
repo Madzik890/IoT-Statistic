@@ -8,14 +8,21 @@
 
 #define SSL_CERT              "./example.crt"          // location of SSL cert
 #define KEY                   "./key.key"            // location of SSL key
+#define DEFAULT_PORT          8000
 
 int main(int argc, char** argv)
 {   
     ServerSSL m_server;
+    int i_port = DEFAULT_PORT;
     
-    int i_port;
-    std::cout << "Podaj numer portu:";
-    std::cin >> i_port;
+    if(argc > 1)
+    {       
+        for(int i = 1; i <= argc - 1;i++)
+        {
+            if(!strcmp( argv[ i ], "-p" ) && argc >= (i+1))
+                i_port = std::atoi(argv[i+1]);  
+        }
+    }
     
     if (m_server.Init(i_port, SSL_CERT, KEY) == EXIT_SUCCESS)
     {
