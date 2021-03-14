@@ -20,12 +20,8 @@ const bool CoreTemp::CheckInfo()
         while (!m_file.eof()) 
         {
            m_file >> s_buffer;
-            i++;
-            if(i == 2)
-            {
-                i_coreTemp = std::stoi(s_buffer);
-                break;
-            }
+           i_coreTemp = std::stoi(s_buffer) / 100;
+           break;
         }
     }
     else

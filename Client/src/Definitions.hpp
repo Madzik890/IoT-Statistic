@@ -10,7 +10,7 @@ typedef unsigned long long ull;
 
 #define DISK_COMMAND                    "/"
 
-#define CORE_COMMAND                    "/proc/acpi/thermal_zone/THRM/temperature"
+#define CORE_COMMAND                    "/sys/class/hwmon/hwmon0/device/temp1_input"
 
 #define CLIENT_MAX_BUFFER               65535
 #define CLIENT_SUCCESS                  0x00000

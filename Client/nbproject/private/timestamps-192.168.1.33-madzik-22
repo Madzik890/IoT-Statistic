@@ -1,4 +1,4 @@
-#Sun Mar 14 02:54:48 CET 2021
+#Sun Mar 14 03:50:38 CET 2021
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\nbproject\\private\\makefile-variables.mk=c1615546065841
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\nbproject\\makefile-impl.mk=c1615546065734
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\clientssl.cpp=c1615559500615
@@ -10,7 +10,7 @@ d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\nbproject\\package-debug.bash=c16
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\loginfo.hpp=c1615647990041
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\memoryspace.hpp=c1615553230759
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\memoryspace.cpp=c1615562676548
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\definitions.hpp=c1615656647159
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\definitions.hpp=c1615690150241
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\diskspace.hpp=c1615553230730
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\coretemp.hpp=c1615554131911
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\ssl\\clientssl.hpp=c1615686857918
@@ -31,8 +31,8 @@ d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\memoryspace.cpp=c16155534850
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\diskspace.cpp=c1615562667596
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\nbproject\\project.xml=c1615546468399
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\ssl\\clientssl.cpp=c1615686861471
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\main.cpp=c1615686886839
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\coretemp.cpp=c1615562658252
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\main.cpp=c1615688513153
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\coretemp.cpp=c1615690236204
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info.hpp=c1615553528413
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\coretemp.cpp=c1615554040599
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\client\\src\\info\\infomanager.hpp=c1615565312864

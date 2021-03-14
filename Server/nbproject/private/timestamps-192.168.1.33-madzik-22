@@ -1,9 +1,9 @@
-#Sun Mar 14 03:00:04 CET 2021
+#Sun Mar 14 03:20:58 CET 2021
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\main.cpp=c1615687165671
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\makefile-variables.mk=c1615554504387
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\serverssl.hpp=c1615655716157
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\lib\\pugixml\\pugiconfig.hpp=c1555450250000
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\severssl.cpp=c1615656278358
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\severssl.cpp=c1615688456145
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\servercallback.cpp=c1615656791255
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\definitions.hpp=c1615653964747
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\pugixml.cpp=c1615567902031
@@ -17,13 +17,13 @@ d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\private\\makefile-vari
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\database\\database.hpp=c1615651343766
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\exampleinfo.xml=c1615643162779
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\lib\\pugixml\\pugixml.hpp=c1555450250000
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\makefile-debug.mk=c1615649508989
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\device\\device.hpp=c1615568207325
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\makefile-debug.mk=c1615649508989
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\examplelog.xml=c1615573401925
 VERSION=1.3
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\package-release.bash=c1615554504372
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\database\\database.cpp=c1615651375262
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\package-release.bash=c1615554504372
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\nbproject\\project.xml=c1615554816244
-d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\device\\device.cpp=c1615568225151
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\servercallback.hpp=c1615651303151
+d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\src\\device\\device.cpp=c1615568225151
 d\:\\zadanie\\rekrutacyjne\\boosthigh\\server\\lib\\pugixml\\foreach.hpp=c1555450250000

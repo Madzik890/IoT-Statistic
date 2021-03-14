@@ -6,7 +6,6 @@
 #include "./src/Info/LogInfo.hpp"
 #include "./src/SSL/ClientSSL.hpp"
 
-#define DEVICE_QUID     "4cbb4ef1-f36c-476d-bf50-ae04f65f8537"
 #define CLIENT_TIME     1000000//1sec
 #define SERVER_IP       "192.168.1.33"
 #define SERVER_PORT     8000
